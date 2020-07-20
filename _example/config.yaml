@@ -1,9 +1,7 @@
 mindbody:
   site_id: -99
   source_name: foo
-  source_key: j9kdro8yK0vHdeeEnOgV55a8Z/U=
-  username: _foo
-  password: apitest1234
+  source_key: bar=
 
 database:
   adapter: sqlite
