@@ -1,0 +1,1 @@
+Dir["#{__dir__}/tasks/*.rb"].each { |f| require_relative f }

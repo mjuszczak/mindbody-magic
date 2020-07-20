@@ -1,0 +1,10 @@
+mindbody:
+  site_id: -99
+  source_name: edboxes
+  source_key: j9kdro8yK0vHdeeEnOgV55a8Z/U=
+  username: Siteowner
+  password: apitest1234
+
+database:
+  adapter: sqlite
+  database: /tmp/mindbody-db

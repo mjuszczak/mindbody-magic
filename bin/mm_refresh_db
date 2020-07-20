@@ -1,0 +1,25 @@
+#! /usr/bin/env ruby
+
+require "bundler/setup"
+require "ice_nine"
+require 'trollop'
+
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+require 'mindbody_magic'
+
+opts = Trollop::options do
+  opt :'config-file', "config file for MM", type: :string, default: ENV['MM_CONFIG_FILE']
+end
+
+config_file = opts[:'config-file'] || ENV['MM_CONFIG_FILE']
+Trollop::die :'config-file', "must be set here or in ENV['MM_CONFIG_FILE']" \
+  if config_file.nil?
+
+MM_CONFIG =
+  IceNine.deep_freeze(MindbodyMagic::Config.load_from_file(config_file))
+
+DB = MindbodyMagic.connect_db(MM_CONFIG)
+MindbodyMagic.init(MM_CONFIG)
+
+require 'mindbody_magic/tasks/refresh_db'
+MindbodyMagic::Tasks::RefreshDB.new.refresh_all

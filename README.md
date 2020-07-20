@@ -1,0 +1,3 @@
+# MindbodyMagic
+
+MINDBODY Helper Gem
